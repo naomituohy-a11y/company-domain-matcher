@@ -182,4 +182,19 @@ with gr.Blocks(title="Company–Domain–Email Matching") as demo:
     load_cols_btn.click(fn=load_columns, inputs=file_input, outputs=[company_dropdown, domain_dropdown])
     run_btn.click(fn=process_with_selection, inputs=[file_input, company_dropdown, domain_dropdown], outputs=[log, download])
 
-demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))
+
+# ==============================================================
+# 🚀 Railway Deployment Fix (Force Port 8080)
+# ==============================================================
+
+# Railway assigns port 8080 for web apps — force Gradio to use it
+os.environ["GRADIO_SERVER_PORT"] = "8080"
+
+print("🚀 Starting Gradio app on port 8080...")
+
+demo.launch(
+    server_name="0.0.0.0",
+    server_port=8080,
+    show_api=False,
+    quiet=True
+)
