@@ -1,0 +1,9 @@
+gradio
+pandas
+openpyxl
+tldextract
+rapidfuzz
+aiohttp
+nest_asyncio
+requests-cache
+numpy
